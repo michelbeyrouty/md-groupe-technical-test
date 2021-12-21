@@ -6,7 +6,7 @@ const Expense = require('../models/Expense');
 const { expenseValidation } = require('../validation');
 
 // Create expense
-router.post('/expenses', async (req, res) => {
+router.post('/', async (req, res) => {
 
   const error = expenseValidation(req.body);
 
@@ -36,7 +36,7 @@ router.post('/expenses', async (req, res) => {
 
 
 // List expenses
-router.get('/expenses', async(req, res) => {
+router.get('/', async(req, res) => {
   try {
     const expenses = await Expense.find();
     console.log(expenses);
@@ -49,7 +49,7 @@ router.get('/expenses', async(req, res) => {
 });
 
 // Get Specific expense
-router.get('/expenses/:expenseId', async(req, res) => {
+router.get('/:expenseId', async(req, res) => {
   try {
     const expense = await Expense.findById(req.params.expenseId);
     res.json(expense);
@@ -61,7 +61,7 @@ router.get('/expenses/:expenseId', async(req, res) => {
 });
 
 // Update Specific expense
-router.patch('/expenses/:expenseId', async (req, res) => {
+router.patch('/:expenseId', async (req, res) => {
   try {
     const { error } = expenseValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -88,7 +88,7 @@ router.patch('/expenses/:expenseId', async (req, res) => {
 });
 
 // Delete Specific expense
-router.delete('/expenses/:expenseId', async(req, res) => {
+router.delete('/:expenseId', async(req, res) => {
   try {
     const removedExpense = await Expense.remove({
       _id: req.params.expenseId,

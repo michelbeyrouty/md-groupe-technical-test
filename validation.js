@@ -10,8 +10,9 @@ const EXPENSE_TYPES = [
 function expenseValidation(expense) {
   const ExpenseSchema = Joi.object({
     description: Joi.string(),
-    type: Joi.string().in(EXPENSE_TYPES)
-      .required(),
+    type: Joi.string(),
+    // type: Joi.string().in(EXPENSE_TYPES)
+    //   .required(),
     value: Joi.number().required(),
   });
 
