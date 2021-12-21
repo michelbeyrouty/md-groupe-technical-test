@@ -3,14 +3,16 @@ const router = express.Router();
 const uuid = require('uuid');
 
 const Expense = require('../models/Expense');
-
 const { expenseValidation } = require('../validation');
 
 // Create expense
 router.post('/expenses', async (req, res) => {
 
-  const { error } = expenseValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  const error = expenseValidation(req.body);
+
+  if(error){
+    return res.status(400).send(error.details[0].message);
+  }
 
   const {
     description,type, value,
@@ -31,6 +33,7 @@ router.post('/expenses', async (req, res) => {
     });
   }
 });
+
 
 // List expenses
 router.get('/expenses', async(req, res) => {
