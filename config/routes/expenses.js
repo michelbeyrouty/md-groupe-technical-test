@@ -3,7 +3,7 @@ const router = express.Router();
 // const uuid = require('uuid');
 
 const Expense = require('../models/Expense');
-const { expenseValidation } = require('../validation');
+const { expenseValidation } = require('../helpers/validation');
 
 // Create expense
 router.post('/', async (req, res) => {
