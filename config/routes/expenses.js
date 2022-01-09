@@ -5,7 +5,8 @@ const router = express.Router();
 const Expense = require('../models/Expense');
 const { expenseValidation } = require('../helpers/validation');
 
-// Create expense
+
+// POST
 router.post('/', async (req, res) => {
 
   const error = expenseValidation(req.body);
@@ -26,51 +27,49 @@ router.post('/', async (req, res) => {
 
   try{
     const createdExpense = await expense.save();
-    res.json(createdExpense);
+    res.json(createdExpense['_doc']);
   } catch (err) {
     res.json({
-      message: err,
+      message: 'error ' + err,
     });
   }
 });
 
-
-// List expenses
-router.get('/', async(req, res) => {
-  try {
-    const expenses = await Expense.find();
-    console.log(expenses);
-    res.json(expenses);
-  } catch(err) {
-    res.json({
-      message: err,
-    });
-  }
-});
-
-// Get Specific expense
+// GET
 router.get('/:expenseId', async(req, res) => {
   try {
     const expense = await Expense.findById(req.params.expenseId);
-    res.json(expense);
+    res.json(expense['_doc']);
   } catch(err) {
     res.json({
-      message: err,
+      message: 'error ' + err,
     });
   }
 });
 
-// Update Specific expense
+// LIST
+router.get('/', async(req, res) => {
+  try {
+    const expenses = await Expense.find();
+    res.json(expenses);
+  } catch(err) {
+    res.json({
+      message: 'error ' + err,
+    });
+  }
+});
+
+// UPDATE
 router.patch('/:expenseId', async (req, res) => {
   try {
-    const { error } = expenseValidation(req.body);
+    const error = expenseValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     const {
       description,type, value,
     } = req.body;
 
-    const updatedExpense = await Expense.updateOne({
+    await Expense.updateOne({
       _id: req.params.expenseId,
     }, {
       $set: {
@@ -79,24 +78,24 @@ router.patch('/:expenseId', async (req, res) => {
         value,
       },
     });
-    res.json(updatedExpense);
+    res.json();
   } catch(err) {
     res.json({
-      message: err,
+      message: 'error ' + err,
     });
   }
 });
 
-// Delete Specific expense
+// DELETE
 router.delete('/:expenseId', async(req, res) => {
   try {
-    const removedExpense = await Expense.remove({
+    await Expense.remove({
       _id: req.params.expenseId,
     });
-    res.json(removedExpense);
+    res.json();
   } catch(err) {
     res.json({
-      message: err,
+      message: 'error ' + err,
     });
   }
 });
