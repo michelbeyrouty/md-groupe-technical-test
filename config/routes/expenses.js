@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const uuid = require('uuid');
-
-const Expense = require('../models/Expense');
+const helpers = require('../helpers');
 const { expenseValidation } = require('../helpers/validation');
 
 
@@ -19,15 +17,14 @@ router.post('/', async (req, res) => {
     description,type, value,
   } = req.body;
 
-  const expense = new Expense({
+  const expense = await helpers.models.mongoDB.expenses.create({
     description,
     type,
     value,
   });
 
   try{
-    const createdExpense = await expense.save();
-    res.json(createdExpense['_doc']);
+    res.json(expense);
   } catch (err) {
     res.json({
       message: 'error ' + err,
