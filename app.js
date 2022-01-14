@@ -9,18 +9,27 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Import Routes
-app.use('/expenses', require('./config/routes/expenses'));
+_importRoutes();
+_connectMongo();
 
-
-// Connect MongoDB
-mongoose.connect(process.env.DB_CONNECTION, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-}, () => {
-  console.log('Connected to DB');
+app.listen(process.env.PORT, () => {
+  console.log(`Running on port ${process.env.PORT}`);
 });
 
-app.listen(3000, () => {
-  console.log('Running RESTful API on port http://localhost:3000');
-});
+
+function _importRoutes(){
+
+  app.use('/expenses', require('./config/routes/expenses'));
+
+}
+
+function _connectMongo(){
+
+  mongoose.connect(process.env.DB_CONNECTION, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  }, () => {
+    console.log('Connected to DB');
+  });
+
+}
