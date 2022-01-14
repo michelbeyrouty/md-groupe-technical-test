@@ -2,14 +2,21 @@ const helpers = require('../../helpers');
 
 module.exports = async(req, res) => {
 
-  helpers.validators.payloadValidator(req.body);
-
   try {
-    const expense = await Expense.findById(req.params.expenseId);
-    res.json(expense['_doc']);
+
+    helpers.validators.controllers.expenses.get(req.params);
+
+    const expense = await helpers.models.mongoDB.expenses.get(req.params);
+
+    res.json(expense);
   } catch(err) {
-    res.json({
-      message: 'error ' + err,
-    });
+    console.log(err);
+    switch (err.name) {
+
+    case 'validationError':
+      return res.status(400).send(err.message);
+    default:
+      return res.status(500).send(err.message);
+    }
   }
 };

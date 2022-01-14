@@ -4,7 +4,7 @@ const Joi = require('joi');
 module.exports = function validatePayload(payload){
 
   const schema = Joi.object({
-    id: Joi.string(),
+    expenseId: Joi.string(),
   });
 
   const { error } = schema.validate(payload);

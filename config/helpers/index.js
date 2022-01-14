@@ -5,6 +5,7 @@ module.exports = {
     mongoDB: {
       expenses: {
         create: require('./models/mongodb/expenses/create')(Expense),
+        get: require('./models/mongodb/expenses/get')(Expense),
       },
     },
   },
