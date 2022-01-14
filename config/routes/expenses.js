@@ -3,7 +3,6 @@ const router = express.Router();
 const controllers = require('../controllers');
 const { expenseValidation } = require('../helpers/validation/validatePayload');
 
-// POST
 router.post('/' , controllers.expenses.post);
 
 // GET

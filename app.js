@@ -10,14 +10,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Import Routes
-const expensesRoute = require('./config/routes/expenses');
+app.use('/expenses', require('./config/routes/expenses'));
 
-app.use('/expenses', expensesRoute);
-
-//Routes
-app.get('/', (req, res) => {
-  res.send('We are on HomePage');
-});
 
 // Connect MongoDB
 mongoose.connect(process.env.DB_CONNECTION, {
