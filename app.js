@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const routes = require('./config/routes');
 require('dotenv').config();
 
 const app = express();
@@ -19,16 +20,17 @@ app.listen(process.env.PORT, () => {
 
 function _importRoutes(){
 
-  app.use('/expenses', require('./config/routes/expenses'));
-
+  app.use('/expenses', routes.expenses);
 }
 
 function _connectMongo(){
 
-  mongoose.connect(process.env.DB_CONNECTION, {
+  const paramethers = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-  }, () => {
+  };
+
+  mongoose.connect(process.env.DB_CONNECTION, paramethers , () => {
     console.log('Connected to DB');
   });
 
