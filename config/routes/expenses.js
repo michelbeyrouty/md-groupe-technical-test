@@ -6,16 +6,7 @@ const { expenseValidation } = require('../helpers/validation/validatePayload');
 router.post('/' , controllers.expenses.post);
 
 // GET
-router.get('/:expenseId', async(req, res) => {
-  try {
-    const expense = await Expense.findById(req.params.expenseId);
-    res.json(expense['_doc']);
-  } catch(err) {
-    res.json({
-      message: 'error ' + err,
-    });
-  }
-});
+router.get('/:expenseId',controllers.expenses.get );
 
 // LIST
 router.get('/', async(req, res) => {

@@ -25,7 +25,6 @@ module.exports = async (req, res) => {
       return res.status(400).send(err.message);
     default:
       return res.status(500).send(err.message);
-
     }
 
   }
