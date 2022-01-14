@@ -1,39 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const helpers = require('../helpers');
+const controllers = require('../controllers');
 const { expenseValidation } = require('../helpers/validation/validatePayload');
 
-
 // POST
-router.post('/', async (req, res) => {
-  try{
-
-    helpers.validators.payloadValidator(req.body);
-
-    const {
-      description,type, value,
-    } = req.body;
-
-    const expense = await helpers.models.mongoDB.expenses.create({
-      description,
-      type,
-      value,
-    });
-
-    res.json(expense);
-  } catch (err) {
-    console.log(err);
-    switch (err.name) {
-
-    case 'validationError':
-      return res.status(400).send(err.message);
-    default:
-      return res.status(500).send(err.message);
-
-    }
-
-  }
-});
+router.post('/' , controllers.expenses.post);
 
 // GET
 router.get('/:expenseId', async(req, res) => {
