@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers');
-const { expenseValidation } = require('../helpers/validation/validatePayload');
+const { expenseValidation } = require('../helpers/validators/validatePayload');
 
 router.post('/' , controllers.expenses.post);
 
