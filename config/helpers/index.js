@@ -8,4 +8,7 @@ module.exports = {
       },
     },
   },
+  validators: {
+    payloadValidator: require('./validation/validatePayload'),
+  },
 };

@@ -6,6 +6,18 @@ const EXPENSE_TYPES = [
   'Transport',
   'Other',
 ];
+const { validationError } = require('../../errors');
+
+function validatePayload(data){
+
+  const error = expenseValidation(data);
+
+  if(error){
+    throw new validationError(error.details[0].message);
+  }
+}
+
+
 
 function expenseValidation(expense) {
   const ExpenseSchema = Joi.object({
@@ -21,6 +33,4 @@ function expenseValidation(expense) {
   return error;
 };
 
-module.exports = {
-  expenseValidation,
-};
+module.exports = validatePayload;
