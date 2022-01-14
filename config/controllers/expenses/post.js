@@ -6,18 +6,12 @@ module.exports = async (req, res) => {
 
     helpers.validators.controllers.expenses.post(req.body);
 
-    const {
-      description,type, value,
-    } = req.body;
-
-    const expense = await helpers.models.mongoDB.expenses.create({
-      description,
-      type,
-      value,
-    });
+    const expense = await helpers.models.mongoDB.expenses.create(req.body);
 
     res.json(expense);
+
   } catch (err) {
+
     console.log(err);
     switch (err.name) {
 
