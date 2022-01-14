@@ -4,7 +4,7 @@ const helpers = require('../../helpers');
 module.exports = async (req, res) => {
   try{
 
-    helpers.validators.payloadValidator(req.body);
+    helpers.validators.controllers.expenses.post(req.body);
 
     const {
       description,type, value,

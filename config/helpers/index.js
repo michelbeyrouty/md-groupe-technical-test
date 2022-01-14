@@ -9,6 +9,10 @@ module.exports = {
     },
   },
   validators: {
-    payloadValidator: require('./validation/validatePayload'),
+    controllers: {
+      expenses:{
+        post: require('./validators/validatePayload'),
+      },
+    },
   },
 };
