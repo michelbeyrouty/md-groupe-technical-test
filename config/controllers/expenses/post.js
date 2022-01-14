@@ -1,12 +1,12 @@
 
-const helpers = require('../../helpers');
+const globals = require('../..');
 
 module.exports = async (req, res) => {
   try{
 
-    helpers.validators.controllers.expenses.post(req.body);
+    globals.validators.expenses.post(req.body);
 
-    const expense = await helpers.models.mongoDB.expenses.create(req.body);
+    const expense = await globals.models.expenses.create(req.body);
 
     res.json(expense);
 

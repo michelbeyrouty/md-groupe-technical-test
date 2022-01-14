@@ -1,4 +1,4 @@
-const { validationError } = require('../../../../errors');
+const { validationError } = require('../../errors');
 const Joi = require('joi');
 
 module.exports = function validatePayload(payload){
