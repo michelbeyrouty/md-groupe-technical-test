@@ -11,7 +11,8 @@ module.exports = {
   validators: {
     controllers: {
       expenses:{
-        post: require('./validators/validatePayload'),
+        post: require('./validators/controllers/expenses/post'),
+        get: require('./validators/controllers/expenses/get'),
       },
     },
   },

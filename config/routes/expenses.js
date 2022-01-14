@@ -5,8 +5,7 @@ const { expenseValidation } = require('../helpers/validators/validatePayload');
 
 router.post('/' , controllers.expenses.post);
 
-// GET
-router.get('/:expenseId',controllers.expenses.get );
+router.get('/:expenseId',controllers.expenses.get);
 
 // LIST
 router.get('/', async(req, res) => {
