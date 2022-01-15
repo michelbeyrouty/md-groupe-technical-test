@@ -10,18 +10,6 @@ router.get('/', controllers.expenses.list);
 
 router.put('/:expenseId', controllers.expenses.put);
 
-// DELETE
-router.delete('/:expenseId', async(req, res) => {
-  try {
-    await Expense.remove({
-      _id: req.params.expenseId,
-    });
-    res.json();
-  } catch(err) {
-    res.json({
-      message: 'error ' + err,
-    });
-  }
-});
+router.delete('/:expenseId', controllers.expenses.delete);
 
 module.exports = router;
