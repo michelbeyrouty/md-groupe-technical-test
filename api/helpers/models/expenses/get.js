@@ -2,8 +2,8 @@ const get = (Expense) => async ({ expenseId }) => {
 
   try {
 
-    const expense = await Expense.findById(expenseId);
-    return expense['_doc'];
+    const result = await Expense.findById(expenseId);
+    return result['_doc'];
 
   }catch(error){
     console.log(error);

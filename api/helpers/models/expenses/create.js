@@ -10,8 +10,8 @@ const create = (Expense) => async ({
       value,
     });
 
-    const createdExpense = await expense.save();
-    return createdExpense['_doc'];
+    const result = await expense.save();
+    return result['_doc'];
 
   }catch(error){
     console.log(error);
