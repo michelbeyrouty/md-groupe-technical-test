@@ -5,8 +5,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 require('dotenv').config();
-const mongodb = require('./mongo');
-mongodb.connectDB();
 
 const app = express();
 
@@ -16,7 +14,7 @@ app.use(bodyParser.json());
 // Import routes;
 app.use('/expenses', routes.expenses);
 app.use('/', async (req, res) => {
-  res.json('req');
+  res.json(req.body);
 });
 
 module.exports = app;
