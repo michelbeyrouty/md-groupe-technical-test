@@ -5,12 +5,12 @@ module.exports = async (req, res) => {
 
     const payload = {
       ...req.body,
-      ...req.param,
+      ...req.params,
     };
 
     helpers.validators.expenses.update(payload);
 
-    const expense = await helpers.models.expenses.create(payload);
+    const expense = await helpers.models.expenses.update(payload);
 
     res.json(expense);
 

@@ -8,19 +8,7 @@ router.get('/:expenseId', controllers.expenses.get);
 
 router.get('/', controllers.expenses.list);
 
-router.put('/', controllers.expenses.put);
-
-// UPDATE
-router.patch('/:expenseId', async (req, res) => {
-  try {
-
-    res.json();
-  } catch(err) {
-    res.json({
-      message: 'error ' + err,
-    });
-  }
-});
+router.put('/:expenseId', controllers.expenses.put);
 
 // DELETE
 router.delete('/:expenseId', async(req, res) => {
