@@ -1,12 +1,14 @@
-const config = require('../..');
+const {
+  helpers, validators,
+} = require('../..');
 
 module.exports = async(req, res) => {
 
   try {
 
-    config.validators.expenses.get(req.params);
+    validators.expenses.get(req.params);
 
-    const expense = await config.models.expenses.get(req.params);
+    const expense = await helpers.models.expenses.get(req.params);
 
     res.json(expense);
   } catch(err) {

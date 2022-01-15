@@ -1,10 +1,12 @@
 const Expense = require('./models/Expense');
 
 module.exports = {
-  models: {
-    expenses: {
-      create: require('./models/expenses/create')(Expense),
-      get: require('./models/expenses/get')(Expense),
+  helpers: {
+    models: {
+      expenses: {
+        create: require('./models/expenses/create')(Expense),
+        get: require('./models/expenses/get')(Expense),
+      },
     },
   },
   validators: {
