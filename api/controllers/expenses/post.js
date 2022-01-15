@@ -1,4 +1,4 @@
-const config = require('../../');
+const config = require('../..');
 
 module.exports = async (req, res) => {
   try{
