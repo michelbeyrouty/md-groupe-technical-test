@@ -1,5 +1,7 @@
 'use strict';
 
+const Joi = require('joi');
+
 const EXPENSE_TYPES = [
   'Entertainment',
   'Food',
@@ -8,7 +10,7 @@ const EXPENSE_TYPES = [
   'Other',
 ];
 
-module.exports = (Errors, Joi) => async (payload) => {
+module.exports = (Errors) => async (payload) => {
 
   const schema = Joi.object({
     expenseId: Joi.string(),

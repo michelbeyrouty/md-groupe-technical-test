@@ -1,6 +1,5 @@
 const Expense = require('../models/Expense');
 const Errors = require('../../config/errors');
-const Joi = require('joi');
 
 module.exports = {
   models: {
@@ -14,10 +13,10 @@ module.exports = {
   },
   validators: {
     expenses:{
-      post: require('./validators/expenses/post')(Joi,Errors),
-      get: require('./validators/expenses/get')(Joi,Errors),
-      update: require('./validators/expenses/update')(Joi,Errors),
-      delete: require('./validators/expenses/delete')(Joi,Errors),
+      post: require('./validators/expenses/post')(Errors),
+      get: require('./validators/expenses/get')(Errors),
+      update: require('./validators/expenses/update')(Errors),
+      delete: require('./validators/expenses/delete')(Errors),
     },
   },
 };

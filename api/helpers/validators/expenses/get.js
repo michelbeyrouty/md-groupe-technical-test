@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = (Errors, Joi) => async (payload) => {
+const Joi = require('joi');
+
+module.exports = (Errors) => async (payload) => {
 
   const schema = Joi.object({
     expenseId: Joi.string(),
