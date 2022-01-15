@@ -16,7 +16,7 @@ const connectDB = async () => {
     dbUrl = mongod.getUri();
   }
 
-  const db_url = dbUrl? dbUrl: process.env.DB_URL;
+  const db_url = dbUrl ? dbUrl: process.env.DB_URL;
 
   mongoose.set('useFindAndModify', false);
   mongoose.connect(db_url, paramethers , () => {

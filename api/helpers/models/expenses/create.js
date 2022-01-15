@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (Expense) => async ({
-  description,type, value,
+  description, type, value,
 }) => {
 
   try {
