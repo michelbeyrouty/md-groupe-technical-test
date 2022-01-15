@@ -1,4 +1,6 @@
-const get = (Expense) => async () => {
+'use strict';
+
+module.exports = (Expense) => async () => {
 
   try {
 
@@ -10,6 +12,3 @@ const get = (Expense) => async () => {
   }
 
 };
-
-
-module.exports = get;

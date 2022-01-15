@@ -1,3 +1,4 @@
+'use strict';
 const helpers = require('../../helpers');
 
 module.exports = async (req, res) => {

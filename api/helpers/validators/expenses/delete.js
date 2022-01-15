@@ -1,3 +1,5 @@
+'use strict';
+
 const { validationError } = require('../../../../config/errors');
 const Joi = require('joi');
 

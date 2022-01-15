@@ -1,4 +1,6 @@
-const create = (Expense) => async ({
+'use strict';
+
+module.exports = (Expense) => async ({
   description,type, value,
 }) => {
 
@@ -18,6 +20,3 @@ const create = (Expense) => async ({
   }
 
 };
-
-
-module.exports = create;

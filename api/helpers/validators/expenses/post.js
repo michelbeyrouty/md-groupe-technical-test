@@ -1,3 +1,5 @@
+'use strict';
+
 const Joi = require('joi');
 const EXPENSE_TYPES = [
   'Entertainment',
