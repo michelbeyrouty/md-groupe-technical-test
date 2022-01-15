@@ -8,25 +8,12 @@ router.get('/:expenseId', controllers.expenses.get);
 
 router.get('/', controllers.expenses.list);
 
+router.put('/', controllers.expenses.put);
+
 // UPDATE
 router.patch('/:expenseId', async (req, res) => {
   try {
-    const error = expenseValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
 
-    const {
-      description,type, value,
-    } = req.body;
-
-    await Expense.updateOne({
-      _id: req.params.expenseId,
-    }, {
-      $set: {
-        description,
-        type,
-        value,
-      },
-    });
     res.json();
   } catch(err) {
     res.json({
