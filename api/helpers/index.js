@@ -7,6 +7,7 @@ module.exports = {
       get: require('./models/expenses/get')(Expense),
       list: require('./models/expenses/list')(Expense),
       update: require('./models/expenses/update')(Expense),
+      delete: require('./models/expenses/delete')(Expense),
     },
   },
   validators: {
@@ -14,6 +15,7 @@ module.exports = {
       post: require('./validators/expenses/post'),
       get: require('./validators/expenses/get'),
       update: require('./validators/expenses/update'),
+      delete: require('./validators/expenses/delete'),
     },
   },
 };

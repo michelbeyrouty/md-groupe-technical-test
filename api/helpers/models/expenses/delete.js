@@ -4,12 +4,11 @@ module.exports = (Expense) => async ({ expenseId }) => {
 
   try {
 
-    const result = await Expense.remove({
+    const result = await Expense.findOneAndRemove({
       _id: expenseId,
     });
 
-    console.log(result);
-    return result;
+    return result['_doc'];
 
   }catch(error){
     console.log(error);
