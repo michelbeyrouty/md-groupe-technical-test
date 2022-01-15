@@ -10,6 +10,12 @@ class BaseError extends Error {
 
 class validationError extends BaseError {};
 
+class ressourceNotFound extends BaseError {};
+
+class mongoError extends BaseError {};
+
 module.exports = {
   validationError,
+  ressourceNotFound,
+  mongoError,
 };

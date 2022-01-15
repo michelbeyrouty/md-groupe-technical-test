@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (Expense) => async ({
+module.exports = (Expense, Errors) => async ({
   description,type, value, expenseId,
 }) => {
 
@@ -18,10 +18,14 @@ module.exports = (Expense) => async ({
       new: true,
     });
 
+    if(result['_doc']){
+      throw new Errors.ressourceNotFound();
+    }
+
     return result['_doc'];
 
   }catch(error){
-    console.log(error);
+    throw new Errors.mongoError();
   }
 
 };

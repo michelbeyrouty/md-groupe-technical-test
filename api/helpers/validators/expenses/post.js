@@ -1,6 +1,5 @@
 'use strict';
 
-const Joi = require('joi');
 const EXPENSE_TYPES = [
   'Entertainment',
   'Food',
@@ -8,9 +7,8 @@ const EXPENSE_TYPES = [
   'Transport',
   'Other',
 ];
-const { validationError } = require('../../../../config/errors');
 
-module.exports = function validatePayload(payload){
+module.exports = (Errors, Joi) => async (payload) => {
 
   const schema = Joi.object({
     description: Joi.string(),
@@ -23,6 +21,6 @@ module.exports = function validatePayload(payload){
   const { error } = schema.validate(payload);
 
   if(error){
-    throw new validationError(error.details[0].message);
+    throw new Errors.validationError(error.details[0].message);
   }
 };

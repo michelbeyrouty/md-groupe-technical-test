@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (Expense) => async () => {
+module.exports = (Expense, Errors) => async () => {
 
   try {
 
@@ -8,7 +8,7 @@ module.exports = (Expense) => async () => {
     return result;
 
   }catch(error){
-    console.log(error);
+    throw new Errors.mongoError();
   }
 
 };
