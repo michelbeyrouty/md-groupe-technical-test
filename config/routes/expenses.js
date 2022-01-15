@@ -6,17 +6,7 @@ router.post('/' , controllers.expenses.post);
 
 router.get('/:expenseId', controllers.expenses.get);
 
-// LIST
-router.get('/', async(req, res) => {
-  try {
-    const expenses = await Expense.find();
-    res.json(expenses);
-  } catch(err) {
-    res.json({
-      message: 'error ' + err,
-    });
-  }
-});
+router.get('/', controllers.expenses.list);
 
 // UPDATE
 router.patch('/:expenseId', async (req, res) => {
