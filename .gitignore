@@ -106,3 +106,4 @@ dist
 # extra
 Node_Backend_Developer_Technical_Test.pdf
 .vscode
+package-lock.json
