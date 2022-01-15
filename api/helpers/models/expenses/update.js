@@ -4,7 +4,7 @@ const create = (Expense) => async ({
 
   try {
 
-    const result = await Expense.updateOne({
+    const result = await Expense.findOneAndUpdate({
       _id: expenseId,
     }, {
       $set: {
@@ -12,11 +12,11 @@ const create = (Expense) => async ({
         type,
         value,
       },
+    }, {
+      new: true,
     });
 
-    console.log(result);
-
-    return result;
+    return result['_doc'];
 
   }catch(error){
     console.log(error);
