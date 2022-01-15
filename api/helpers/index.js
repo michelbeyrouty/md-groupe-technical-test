@@ -5,6 +5,7 @@ module.exports = {
     expenses: {
       create: require('./models/expenses/create')(Expense),
       get: require('./models/expenses/get')(Expense),
+      list: require('./models/expenses/list')(Expense),
     },
   },
   validators: {
