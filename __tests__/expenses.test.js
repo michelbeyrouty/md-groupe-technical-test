@@ -28,28 +28,28 @@ describe('Test expenses', () => {
 
   }, 30000);
 
-  test('Get expense', async () => {
+  test('Get expense success', async () => {
 
     const response = await request.get(`/expenses/${createdExpenseId}`).send();
     expect(response.status).toBe(200);
 
   }, 30000);
 
-  test('List expense', async () => {
+  test('List expense success', async () => {
 
     const response = await request.get('/expenses').send();
     expect(response.status).toBe(200);
 
   }, 30000);
 
-  test('Update expense', async () => {
+  test('Update expense success', async () => {
 
     const response = await request.put(`/expenses/${createdExpenseId}`).send();
     expect(response.status).toBe(200);
 
   }, 30000);
 
-  test('Delete expense', async () => {
+  test('Delete expense success', async () => {
 
     const response = await request.delete(`/expenses/${createdExpenseId}`).send();
     expect(response.status).toBe(200);
