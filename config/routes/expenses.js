@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const controllers = require('../controllers');
+const expenseControllers = require('../controllers').expenses;
 
-router.post('/' , controllers.expenses.post);
+router.post('/' , expenseControllers.post);
 
-router.get('/:expenseId',controllers.expenses.get);
+router.get('/:expenseId',expenseControllers.get);
 
 // LIST
 router.get('/', async(req, res) => {

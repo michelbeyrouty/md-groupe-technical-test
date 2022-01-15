@@ -4,13 +4,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./config/routes');
 require('dotenv').config();
-const config = require('./config');
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.set('config', config);
 
 _importRoutes();
 _connectMongo();
