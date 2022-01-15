@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const expenseControllers = require('../controllers').expenses;
+const expenseControllers = require('../../api/controllers').expenses;
 
 router.post('/' , expenseControllers.post);
 
