@@ -1,11 +1,11 @@
-const { helpers } = require('../..');
+const api = require('../../');
 
 module.exports = async (req, res) => {
   try{
 
-    helpers.validators.expenses.post(req.body);
+    api.helpers.validators.expenses.post(req.body);
 
-    const expense = await helpers.models.expenses.create(req.body);
+    const expense = await api.helpers.models.expenses.create(req.body);
 
     res.json(expense);
 

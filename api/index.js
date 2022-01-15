@@ -17,6 +17,7 @@ module.exports = {
   },
   constrollers: {
     expenses : {
+      post : require('./controllers/expenses/post'),
       get : require('./controllers/expenses/get'),
     },
   },
