@@ -12,6 +12,7 @@ module.exports = async(req, res) => {
     console.log(err);
     switch (err.name) {
 
+    case 'mongoError':
     default:
       return res.status(500).send(err.message);
     }

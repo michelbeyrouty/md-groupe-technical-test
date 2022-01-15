@@ -22,6 +22,11 @@ module.exports = async (req, res) => {
 
     case 'validationError':
       return res.status(400).send(err.message);
+
+    case 'expenseNotFound':
+      return res.status(404).send(err.message);
+
+    case 'mongoError':
     default:
       return res.status(500).send(err.message);
     }

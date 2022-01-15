@@ -19,7 +19,7 @@ module.exports = (Expense, Errors) => async ({
     });
 
     if(result['_doc']){
-      throw new Errors.ressourceNotFound();
+      throw new Errors.expenseNotFound();
     }
 
     return result['_doc'];

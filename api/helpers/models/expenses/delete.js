@@ -9,7 +9,7 @@ module.exports = (Expense, Errors) => async ({ expenseId }) => {
     });
 
     if(result['_doc']){
-      throw new Errors.ressourceNotFound();
+      throw new Errors.expenseNotFound();
     }
 
     return result['_doc'];
