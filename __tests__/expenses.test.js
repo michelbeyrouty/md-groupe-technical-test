@@ -5,12 +5,9 @@ const server = require('../server');
 const mongo = require('../config/mongo');
 
 const request = supertest(app);
+let createdExpenseId = null;
 
 describe('Test expenses', () => {
-
-  beforeAll(() => {
-    mongo.connectDB();
-  });
 
   afterAll(() => {
     mongo.disconnectDB();
@@ -26,6 +23,35 @@ describe('Test expenses', () => {
     };
 
     const response = await request.post('/expenses').send(payload);
+    expect(response.status).toBe(200);
+    createdExpenseId = response['body']['_id'];
+
+  }, 30000);
+
+  test('Get expense', async () => {
+
+    const response = await request.get(`/expenses/${createdExpenseId}`).send();
+    expect(response.status).toBe(200);
+
+  }, 30000);
+
+  test('List expense', async () => {
+
+    const response = await request.get('/expenses').send();
+    expect(response.status).toBe(200);
+
+  }, 30000);
+
+  test('Update expense', async () => {
+
+    const response = await request.put(`/expenses/${createdExpenseId}`).send();
+    expect(response.status).toBe(200);
+
+  }, 30000);
+
+  test('Delete expense', async () => {
+
+    const response = await request.delete(`/expenses/${createdExpenseId}`).send();
     expect(response.status).toBe(200);
 
   }, 30000);
