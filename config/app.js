@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 
 // Import routes;
 app.use('/expenses', routes.expenses);
+app.use('/', async (req, res) => {
+  res.json('req');
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Running on port ${process.env.PORT}`);
