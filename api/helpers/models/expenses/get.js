@@ -6,7 +6,7 @@ module.exports = (Expense,Errors) => async ({ expenseId }) => {
 
     const result = await Expense.findById(expenseId);
 
-    if(result['_doc']){
+    if(!result['_doc']){
       throw new Errors.expenseNotFound();
     }
 

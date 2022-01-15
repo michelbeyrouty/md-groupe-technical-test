@@ -18,7 +18,7 @@ module.exports = (Expense, Errors) => async ({
       new: true,
     });
 
-    if(result['_doc']){
+    if(!result['_doc']){
       throw new Errors.expenseNotFound();
     }
 
