@@ -1,12 +1,11 @@
-
-const globals = require('../..');
+const config = require('../../');
 
 module.exports = async (req, res) => {
   try{
 
-    globals.validators.expenses.post(req.body);
+    config.validators.expenses.post(req.body);
 
-    const expense = await globals.models.expenses.create(req.body);
+    const expense = await config.models.expenses.create(req.body);
 
     res.json(expense);
 
