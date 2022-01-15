@@ -1,11 +1,12 @@
-const api = require('../../');
+const helpers = require('../../helpers');
+
 module.exports = async(req, res) => {
 
   try {
 
-    api.helpers.validators.expenses.get(req.params);
+    helpers.validators.expenses.get(req.params);
 
-    const expense = await api.helpers.models.expenses.get(req.params);
+    const expense = await helpers.models.expenses.get(req.params);
 
     res.json(expense);
   } catch(err) {
