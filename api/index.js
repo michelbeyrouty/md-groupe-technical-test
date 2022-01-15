@@ -15,4 +15,9 @@ module.exports = {
       },
     },
   },
+  constrollers: {
+    expenses : {
+      get : require('./controllers/expenses/get'),
+    },
+  },
 };

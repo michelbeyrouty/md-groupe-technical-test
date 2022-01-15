@@ -6,7 +6,7 @@ const EXPENSE_TYPES = [
   'Transport',
   'Other',
 ];
-const { validationError } = require('../../errors');
+const { validationError } = require('../../../../config/errors');
 
 module.exports = function validatePayload(payload){
 
