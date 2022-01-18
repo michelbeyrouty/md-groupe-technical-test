@@ -33,7 +33,7 @@ These are the technologies used in this solution
 4.  Run tests
 
     ```sh
-    npm install
+    npm test
     ```
 
 5.  Start server
