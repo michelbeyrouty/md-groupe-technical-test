@@ -66,7 +66,7 @@ describe('Test expenses', () => {
   test('Update expense validationError', async () => {
 
     const response = await request.put(`/expenses/${createdExpenseId}`).send({
-      'value': 'string',
+      'type': 'string',
     });
     expect(response.status).toBe(400);
 
