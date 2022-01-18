@@ -12,7 +12,6 @@ module.exports = async (req, res) => {
 
   } catch (err) {
 
-    console.log(err);
     switch (err.name) {
 
     case 'validationError':
