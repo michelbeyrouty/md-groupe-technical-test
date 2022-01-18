@@ -5,7 +5,7 @@ const Joi = require('joi');
 module.exports = (Errors) => async (payload) => {
 
   const schema = Joi.object({
-    expenseId: Joi.string(),
+    expenseId: Joi.string().required(),
   });
 
   const { error } = schema.validate(payload);

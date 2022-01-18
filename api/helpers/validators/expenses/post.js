@@ -13,10 +13,9 @@ const EXPENSE_TYPES = [
 module.exports = (Errors) => async (payload) => {
 
   const schema = Joi.object({
-    description: Joi.string(),
+    description: Joi.string().required(),
     type: Joi.string(),
-    // type: Joi.string().in(EXPENSE_TYPES)
-    //   .required(),
+    type: Joi.string().valid(...EXPENSE_TYPES),
     value: Joi.number().required(),
   });
 
