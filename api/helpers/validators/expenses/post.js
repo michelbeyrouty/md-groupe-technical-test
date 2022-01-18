@@ -1,14 +1,7 @@
 'use strict';
 
 const Joi = require('joi');
-
-const EXPENSE_TYPES = [
-  'Entertainment',
-  'Food',
-  'Bills',
-  'Transport',
-  'Other',
-];
+const { EXPENSE_TYPES } = require('../../../../config/constants');
 
 module.exports = (Errors) => async (payload) => {
 
