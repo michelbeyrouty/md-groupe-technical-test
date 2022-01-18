@@ -37,7 +37,6 @@ These are the technologies used in this solution
     ```
 
 5.  Start server
-    ````sh
+    ```sh
     node server.js
-    ```s
-    ````
+    ```
