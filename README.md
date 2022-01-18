@@ -40,3 +40,7 @@ These are the technologies used in this solution
     ```sh
     node server.js
     ```
+
+## API Documentation
+
+Documentation can be found by following this [link](https://app.swaggerhub.com/apis/michel_beyrouty/MD-groupe-expenses/1.0.0)
