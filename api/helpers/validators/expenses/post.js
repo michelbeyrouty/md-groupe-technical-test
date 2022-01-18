@@ -3,7 +3,7 @@
 const Joi = require('joi');
 const { EXPENSE_TYPES } = require('../../../../config/constants');
 
-module.exports = (Errors) => async (payload) => {
+module.exports = (Errors) => (payload) => {
 
   const schema = Joi.object({
     description: Joi.string().required(),

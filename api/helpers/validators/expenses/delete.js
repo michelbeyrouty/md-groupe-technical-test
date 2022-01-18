@@ -2,7 +2,7 @@
 
 const Joi = require('joi');
 
-module.exports = (Errors) => async (payload) => {
+module.exports = (Errors) => (payload) => {
 
   const schema = Joi.object({
     expenseId: Joi.string().required(),
