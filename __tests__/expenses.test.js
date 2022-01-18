@@ -14,7 +14,7 @@ describe('Test expenses', () => {
     server.close();
   });
 
-  test('Post expense', async () => {
+  test('Post expense success', async () => {
 
     const payload = {
       'description': 'd',
@@ -53,6 +53,30 @@ describe('Test expenses', () => {
 
     const response = await request.delete(`/expenses/${createdExpenseId}`).send();
     expect(response.status).toBe(200);
+
+  }, 30000);
+
+  test('Post expense validationError', async () => {
+
+    const response = await request.post('/expenses').send({});
+    expect(response.status).toBe(400);
+
+  }, 30000);
+
+  test('Update expense validationError', async () => {
+
+    const response = await request.put(`/expenses/${createdExpenseId}`).send({
+      'value': 'string',
+    });
+    expect(response.status).toBe(400);
+
+  }, 30000);
+
+
+  test('Get expense mongoError', async () => {
+
+    const response = await request.get('/expenses/xxx').send();
+    expect(response.status).toBe(500);
 
   }, 30000);
 
